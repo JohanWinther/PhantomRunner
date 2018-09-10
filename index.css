@@ -24,6 +24,17 @@ html, body {
   display: none;
 }
 
+/* Logo */
+.logo {
+  margin: auto;
+  padding-top: 5vh;
+  width: 25vw;
+  height: 10vh;
+  background-image: url(https://ftek.se/wp-content/uploads/ftek-documents/logotyper/Spidera.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 /* Offline page */
 
@@ -33,7 +44,7 @@ html, body {
   line-height: 1.55;
   margin: 0 auto;
   max-width: 600px;
-  padding-top: 100px;
+  /* padding-top: 100px; */
   width: 100%;
 }
 
@@ -41,8 +52,8 @@ html, body {
   height: 150px;
   max-width: 600px;
   overflow: hidden;
-  position: absolute;
-  top: 35px;
+  /* position: absolute; */
+  /* top: 35px; */
   width: 44px;
 }
 
@@ -51,8 +62,8 @@ html, body {
   max-width: 600px;
   opacity: 1;
   overflow: hidden;
-  position: absolute;
-  top: 0;
+  /* position: absolute; */
+  /* top: 0; */
   z-index: 2;
 }
 
@@ -94,37 +105,6 @@ html, body {
   }
   .nav-wrapper {
     margin-top: 30px;
-  }
-}
-
-@media (min-width: 600px) and (max-width: 736px) and (orientation: landscape) {
-  .offline .interstitial-wrapper {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-@media (min-width: 420px) and (max-width: 736px) and (min-height: 240px) and (max-height: 420px) and (orientation:landscape) {
-  .interstitial-wrapper {
-    margin-bottom: 100px;
-  }
-}
-
-@media (min-height: 240px) and (orientation: landscape) {
-  .offline .interstitial-wrapper {
-    margin-bottom: 90px;
-  }
-  .icon-offline {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-height: 320px) and (orientation: landscape) {
-  .icon-offline {
-    margin-bottom: 0;
-  }
-  .offline .runner-container {
-    top: 10px;
   }
 }
 
