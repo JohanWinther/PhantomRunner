@@ -57,6 +57,12 @@
         // Sound FX.
         this.audioBuffer = null;
         this.soundFx = {};
+        this.music = new Audio('assets/fantomen.mp3');
+        this.music.volume = 0.25;
+        this.music.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
 
         // Global web audio context for playing sounds.
         this.audioContext = null;
@@ -70,11 +76,6 @@
         } else {
             this.loadImages();
         }
-        this.music = new Audio('assets/fantomen.mp3');
-        this.music.addEventListener('ended', function() {
-            this.currentTime = 0;
-            this.play();
-        }, false);
     }
     window['Runner'] = Runner;
 
