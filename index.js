@@ -70,8 +70,11 @@
         } else {
             this.loadImages();
         }
-
-        this.music = document.querySelector('#audio-resources').content.querySelector('#fantomen');
+        this.music = new Audio('assets/fantomen.mp3');
+        this.music.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        }, false);
     }
     window['Runner'] = Runner;
 
@@ -775,7 +778,6 @@
          * Game over state.
          */
         gameOver: function () {
-            this.music.pause();
             this.music.currentTime = 0;
             this.playSound(this.soundFx.HIT);
             vibrate(200);
@@ -806,6 +808,7 @@
         },
 
         stop: function () {
+            this.music.pause();
             this.playing = false;
             this.paused = true;
             cancelAnimationFrame(this.raqId);
@@ -814,6 +817,7 @@
 
         play: function () {
             if (!this.crashed) {
+                this.music.play();
                 this.playing = true;
                 this.paused = false;
                 this.tRex.update(0, Trex.status.RUNNING);
@@ -824,6 +828,8 @@
 
         restart: function () {
             if (!this.raqId) {
+                this.music.currentTime = 0;
+                this.music.play();
                 this.playCount++;
                 this.runningTime = 0;
                 this.playing = true;
