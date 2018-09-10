@@ -3,3 +3,6 @@
 Chrome Offline T-rex game modified to the Phantom.
 
 [Play Game](johanwinther.github.io/PhantomRunner)
+
+### Contributions
+* Pirate and parrot sprites - [Eric Carlsson](https://github.com/ECarlsson)
