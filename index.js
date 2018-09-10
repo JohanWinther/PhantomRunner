@@ -57,6 +57,9 @@
         // Sound FX.
         this.audioBuffer = null;
         this.soundFx = {};
+        this.soundMusic = new Audio('assets/fantomen.mp3');
+        this.soundMusic.loop = true;
+        this.soundMusic.volume = 0.1;
 
         // Global web audio context for playing sounds.
         this.audioContext = null;
@@ -501,6 +504,7 @@
             this.tRex.playingIntro = false;
             this.containerEl.style.webkitAnimation = '';
             this.playCount++;
+            this.soundMusic.play();
 
             // Handle tabbing off the page. Pause the current game.
             document.addEventListener(Runner.events.VISIBILITY,
@@ -771,6 +775,8 @@
          * Game over state.
          */
         gameOver: function () {
+            this.soundMusic.pause();
+            this.soundMusic.load();
             this.playSound(this.soundFx.HIT);
             vibrate(200);
 
@@ -819,6 +825,7 @@
         restart: function () {
             if (!this.raqId) {
                 this.playCount++;
+                this.soundMusic.play();
                 this.runningTime = 0;
                 this.playing = true;
                 this.crashed = false;
