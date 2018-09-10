@@ -59,6 +59,7 @@
         this.soundFx = {};
         this.music = new Audio('assets/fantomen.mp3');
         this.music.volume = 0.25;
+        this.music.loop = true;
         this.music.addEventListener('ended', function() {
             this.currentTime = 0;
             this.play();
