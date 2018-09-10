@@ -70,6 +70,8 @@
         } else {
             this.loadImages();
         }
+
+        this.music = document.querySelector('#audio-resources').content.querySelector('#fantomen');
     }
     window['Runner'] = Runner;
 
@@ -193,7 +195,7 @@
     Runner.sounds = {
         BUTTON_PRESS: 'offline-sound-press',
         HIT: 'offline-sound-hit',
-        SCORE: 'offline-sound-reached'
+        SCORE: 'offline-sound-reached',
     };
 
 
@@ -309,6 +311,7 @@
          */
         loadSounds: function () {
             if (!IS_IOS) {
+                this.music.load();
                 this.audioContext = new AudioContext();
 
                 var resourceTemplate =
@@ -462,6 +465,7 @@
             if (!this.activated && !this.crashed) {
                 this.playingIntro = true;
                 this.tRex.playingIntro = true;
+                this.music.play();
 
                 // CSS animation definition.
                 var keyframes = '@-webkit-keyframes intro { ' +
@@ -771,6 +775,8 @@
          * Game over state.
          */
         gameOver: function () {
+            this.music.pause();
+            this.music.currentTime = 0;
             this.playSound(this.soundFx.HIT);
             vibrate(200);
 
@@ -859,6 +865,19 @@
                 sourceNode.buffer = soundBuffer;
                 sourceNode.connect(this.audioContext.destination);
                 sourceNode.start(0);
+            }
+        },
+
+        /**
+         * Stop a sound.
+         * @param {SoundBuffer} soundBuffer
+         */
+        stopSound: function (soundBuffer) {
+            if (soundBuffer) {
+                var sourceNode = this.audioContext.createBufferSource();
+                sourceNode.buffer = soundBuffer;
+                sourceNode.connect(this.audioContext.destination);
+                sourceNode.stop(0);
             }
         },
 
